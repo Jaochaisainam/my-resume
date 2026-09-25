@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - นายปิยวัฒน์ สุขหาญ</title>
+    <title>Resume - นายปิยวัฒน์ สุขหาญ / Piyawath Sukhan</title>
     <style>
         :root {
             --bg-dark: #1e293b;
@@ -32,6 +32,28 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            position: relative;
+        }
+
+        /* ปุ่มเปลี่ยนภาษา (มุมขวาบน) */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .lang-switch:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* ส่วนหัวสีน้ำเงินเข้ม */
@@ -43,7 +65,6 @@
             border-bottom: 4px solid var(--accent-red);
         }
 
-        /* กรอบวงกลมโปรไฟล์ */
         .profile-img-container {
             width: 120px;
             height: 120px;
@@ -123,6 +144,7 @@
             align-items: center;
             transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            cursor: pointer;
         }
 
         .menu-card:hover {
@@ -142,7 +164,7 @@
             font-size: 16px;
         }
 
-        /* รายละเอียดเนื้อหาในแต่ละส่วน (ซ่อน/แสดง) */
+        /* รายละเอียดเนื้อหาในแต่ละส่วน */
         .detail-section {
             display: none;
             text-align: left;
@@ -181,23 +203,36 @@
         li {
             margin-bottom: 8px;
         }
+
+        /* คลาสสลับภาษา */
+        .lang-en { display: none; }
+        .lang-th { display: block; }
+        
+        body.english .lang-th { display: none; }
+        body.english .lang-en { display: block; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- ปุ่มสลับภาษา -->
+        <button class="lang-switch" onclick="toggleLanguage()">🌐 EN / TH</button>
+
         <!-- ส่วนหัวโปรไฟล์ -->
         <div class="profile-header">
             <div class="profile-img-container">
                 <img src="https://cdn.phototourl.com/member/2026-09-25-2c563825-4fc7-4565-a96c-9464541ae0c6.jpg" alt="Profile" class="profile-img">
             </div>
-            <h1>นายปิยวัฒน์ สุขหาญ</h1>
+            
+            <h1 class="lang-th">นายปิยวัฒน์ สุขหาญ</h1>
+            <h1 class="lang-en">Piyawath Sukhan</h1>
+            
             <p>Computer Mathematics Student • KMUTNB</p>
             
             <div class="contact-badges">
                 <div class="badge">📞 0970786165</div>
                 <div class="badge">✉️ piyawathsh@gmail.com</div>
-                <div class="badge">📍 กรุงเทพมหานคร</div>
+                <div class="badge class-loc">📍 <span class="lang-th">กรุงเทพมหานคร</span><span class="lang-en">Bangkok</span></div>
             </div>
         </div>
 
@@ -206,53 +241,94 @@
             
             <!-- หน้าหลัก (เมนูปุ่มกด) -->
             <div id="main-menu">
-                <p class="instruction">คลิกเลือกหัวข้อด้านล่างเพื่อดูรายละเอียดประวัติ ทักษะคอมพิวเตอร์ และผลงาน</p>
+                <p class="instruction">
+                    <span class="lang-th">คลิกเลือกหัวข้อด้านล่างเพื่อดูรายละเอียดประวัติ ทักษะคอมพิวเตอร์ และผลงาน</span>
+                    <span class="lang-en">Click the topics below to view profile details, technical skills, and projects.</span>
+                </p>
                 
                 <div class="menu-grid">
-                    <a href="#" class="menu-card" onclick="showSection('about')">
-                        <span>เกี่ยวกับฉัน (About Me)</span>
+                    <div class="menu-card" onclick="showSection('about')">
+                        <span>
+                            <span class="lang-th">เกี่ยวกับฉัน (About Me)</span>
+                            <span class="lang-en">About Me</span>
+                        </span>
                         <span class="arrow">→</span>
-                    </a>
-                    <a href="#" class="menu-card" onclick="showSection('education')">
-                        <span>ประวัติการศึกษา (Education)</span>
+                    </div>
+                    <div class="menu-card" onclick="showSection('education')">
+                        <span>
+                            <span class="lang-th">ประวัติการศึกษา (Education)</span>
+                            <span class="lang-en">Education</span>
+                        </span>
                         <span class="arrow">→</span>
-                    </a>
-                    <a href="#" class="menu-card" onclick="showSection('skills')">
-                        <span>ทักษะทางเทคโนโลยี (Technical Skills)</span>
+                    </div>
+                    <div class="menu-card" onclick="showSection('skills')">
+                        <span>
+                            <span class="lang-th">ทักษะทางเทคโนโลยี (Technical Skills)</span>
+                            <span class="lang-en">Technical Skills</span>
+                        </span>
                         <span class="arrow">→</span>
-                    </a>
-                    <a href="#" class="menu-card" onclick="showSection('projects')">
-                        <span>โครงงานและผลงาน (Projects)</span>
+                    </div>
+                    <div class="menu-card" onclick="showSection('projects')">
+                        <span>
+                            <span class="lang-th">โครงงานและผลงาน (Projects)</span>
+                            <span class="lang-en">Projects</span>
+                        </span>
                         <span class="arrow">→</span>
-                    </a>
-                    <a href="#" class="menu-card" onclick="showSection('activities')">
-                        <span>กิจกรรมและใบรับรอง (Activities)</span>
+                    </div>
+                    <div class="menu-card" onclick="showSection('activities')">
+                        <span>
+                            <span class="lang-th">กิจกรรมและใบรับรอง (Activities)</span>
+                            <span class="lang-en">Activities</span>
+                        </span>
                         <span class="arrow">→</span>
-                    </a>
+                    </div>
                 </div>
             </div>
 
             <!-- รายละเอียด: เกี่ยวกับฉัน -->
             <div id="about" class="detail-section">
-                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
-                <h2>เกี่ยวกับฉัน (About Me)</h2>
-                <p>สวัสดีครับ ผมชื่อ <strong>นายปิยวัฒน์ สุขหาญ</strong> กำลังศึกษาอยู่ในระดับปริญญาตรี สาขาวิชาคณิตศาสตร์เชิงวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ประยุกต์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (มจพ.) มีความสนใจด้านการพัฒนาซอฟต์แวร์ การจัดการฐานข้อมูล และการเขียนโปรแกรม</p>
+                <button class="back-btn" onclick="showMenu()">
+                    <span class="lang-th">← กลับหน้าหลัก</span>
+                    <span class="lang-en">← Back to Main Menu</span>
+                </button>
+                <h2>
+                    <span class="lang-th">เกี่ยวกับฉัน (About Me)</span>
+                    <span class="lang-en">About Me</span>
+                </h2>
+                <p class="lang-th">สวัสดีครับ ผมชื่อ <strong>นายปิยวัฒน์ สุขหาญ</strong> กำลังศึกษาอยู่ในระดับปริญญาตรี สาขาวิชาคณิตศาสตร์เชิงวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ประยุกต์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (มจพ.) มีความสนใจด้านการพัฒนาซอฟต์แวร์ การจัดการฐานข้อมูล และการเขียนโปรแกรม</p>
+                <p class="lang-en">Hello, my name is <strong>Piyawath Sukhan</strong>. I am an undergraduate student in Computer Mathematics at the Faculty of Applied Science, King Mongkut's University of Technology North Bangkok (KMUTNB). I am interested in software development, database management, and programming.</p>
             </div>
 
             <!-- รายละเอียด: ประวัติการศึกษา -->
             <div id="education" class="detail-section">
-                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
-                <h2>ประวัติการศึกษา (Education)</h2>
-                <ul>
+                <button class="back-btn" onclick="showMenu()">
+                    <span class="lang-th">← กลับหน้าหลัก</span>
+                    <span class="lang-en">← Back to Main Menu</span>
+                </button>
+                <h2>
+                    <span class="lang-th">ประวัติการศึกษา (Education)</span>
+                    <span class="lang-en">Education</span>
+                </h2>
+                <ul class="lang-th">
                     <li><strong>ปริญญาตรี:</strong> สาขาวิชาคณิตศาสตร์เชิงวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ประยุกต์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (กำลังศึกษา)</li>
                     <li><strong>มัธยมศึกษาตอนปลาย:</strong> สายการเรียนวิทยาศาสตร์-คณิตศาสตร์ (โรงเรียนพระหฤทัยนนทบุรี)</li>
+                </ul>
+                <ul class="lang-en">
+                    <li><strong>Bachelor's Degree:</strong> Computer Mathematics, Faculty of Applied Science, King Mongkut's University of Technology North Bangkok (In Progress)</li>
+                    <li><strong>High School:</strong> Science-Math Program (Providence Nonthaburi School)</li>
                 </ul>
             </div>
 
             <!-- รายละเอียด: ทักษะทางเทคโนโลยี -->
             <div id="skills" class="detail-section">
-                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
-                <h2>ทักษะทางเทคโนโลยี (Technical Skills)</h2>
+                <button class="back-btn" onclick="showMenu()">
+                    <span class="lang-th">← กลับหน้าหลัก</span>
+                    <span class="lang-en">← Back to Main Menu</span>
+                </button>
+                <h2>
+                    <span class="lang-th">ทักษะทางเทคโนโลยี (Technical Skills)</span>
+                    <span class="lang-en">Technical Skills</span>
+                </h2>
                 <ul>
                     <li><strong>Languages:</strong> C#, Python, HTML, CSS, JavaScript, SQL</li>
                     <li><strong>Databases:</strong> Microsoft Access, MySQL, SQL Server</li>
@@ -262,29 +338,50 @@
 
             <!-- รายละเอียด: โครงงานและผลงาน -->
             <div id="projects" class="detail-section">
-                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
-                <h2>โครงงานและผลงาน (Projects)</h2>
-                <ul>
+                <button class="back-btn" onclick="showMenu()">
+                    <span class="lang-th">← กลับหน้าหลัก</span>
+                    <span class="lang-en">← Back to Main Menu</span>
+                </button>
+                <h2>
+                    <span class="lang-th">โครงงานและผลงาน (Projects)</span>
+                    <span class="lang-en">Projects</span>
+                </h2>
+                <ul class="lang-th">
                     <li><strong>YommabahnRama7 Shop:</strong> ระบบจัดการฐานข้อมูลร้านค้าด้วย Microsoft Access 2021</li>
                     <li><strong>Party Bill Splitter:</strong> เว็บแอปพลิเคชันคำนวณหารค่าใช้จ่ายด้วย HTML, CSS และ JavaScript</li>
                     <li><strong>Healthcare System UX/UI Case Study (Maharat Nakhon Ratchasima Hospital):</strong> กรณีศึกษา UX/UI สำหรับระบบบริการสุขภาพ ของโรงพยาบาลมหาราชนครราชสีมา</li>
+                </ul>
+                <ul class="lang-en">
+                    <li><strong>YommabahnRama7 Shop:</strong> Store Database Management System using Microsoft Access 2021</li>
+                    <li><strong>Party Bill Splitter:</strong> Web application for splitting expenses using HTML, CSS, and JavaScript</li>
+                    <li><strong>Healthcare System UX/UI Case Study (Maharat Nakhon Ratchasima Hospital):</strong> UX/UI case study for healthcare services at Maharat Nakhon Ratchasima Hospital</li>
                 </ul>
             </div>
 
             <!-- รายละเอียด: กิจกรรมและใบรับรอง -->
             <div id="activities" class="detail-section">
-                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
-                <h2>กิจกรรมและใบรับรอง (Activities)</h2>
-                <ul>
+                <button class="back-btn" onclick="showMenu()">
+                    <span class="lang-th">← กลับหน้าหลัก</span>
+                    <span class="lang-en">← Back to Main Menu</span>
+                </button>
+                <h2>
+                    <span class="lang-th">กิจกรรมและใบรับรอง (Activities)</span>
+                    <span class="lang-en">Activities</span>
+                </h2>
+                <ul class="lang-th">
                     <li>เข้าร่วมโครงการอบรมเชิงปฏิบัติการพัฒนาซอฟต์แวร์และอัลกอริทึม</li>
                     <li>กิจกรรมจิตอาสาและพัฒนาชุมชนของคณะวิทยาศาสตร์ประยุกต์ มจพ.</li>
+                </ul>
+                <ul class="lang-en">
+                    <li>Participated in software and algorithm development workshop projects.</li>
+                    <li>Community service and volunteer activities with the Faculty of Applied Science, KMUTNB.</li>
                 </ul>
             </div>
 
         </div>
     </div>
 
-    <!-- สคริปต์สลับหน้าจอ -->
+    <!-- สคริปต์สลับหน้าจอและสลับภาษา -->
     <script>
         function showSection(sectionId) {
             document.getElementById('main-menu').style.display = 'none';
@@ -295,6 +392,10 @@
         function showMenu() {
             document.querySelectorAll('.detail-section').forEach(sec => sec.classList.remove('active'));
             document.getElementById('main-menu').style.display = 'block';
+        }
+
+        function toggleLanguage() {
+            document.body.classList.toggle('english');
         }
     </script>
 </body>
