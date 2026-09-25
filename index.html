@@ -43,14 +43,23 @@
             border-bottom: 4px solid var(--accent-red);
         }
 
-        .profile-img {
+        /* กรอบจำกัดขนาดรูปโปรไฟล์ให้เป็นวงกลมพอดีสวยงาม */
+        .profile-img-container {
             width: 120px;
             height: 120px;
+            margin: 0 auto 20px auto;
             border-radius: 50%;
-            object-fit: cover;
+            overflow: hidden;
             border: 4px solid #ffffff;
-            margin-bottom: 20px;
             background-color: #cbd5e1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .profile-header h1 {
@@ -179,8 +188,10 @@
     <div class="container">
         <!-- ส่วนหัวโปรไฟล์ -->
         <div class="profile-header">
-            <!-- หากมีรูปตัวเอง สามารถเปลี่ยนลิงก์รูปใน src ได้ -->
-            <img src="https://cdn.phototourl.com/member/2026-09-25-4d2c4062-d124-433f-bcf9-a43c85cc5147.jpg">
+            <!-- กรอบจำกัดขนาดรูปโปรไฟล์ -->
+            <div class="profile-img-container">
+                <img src="https://cdn.phototourl.com/member/2026-09-25-4d2c4062-d124-433f-bcf9-a43c85cc5147.jpg" alt="Profile" class="profile-img">
+            </div>
             <h1>นายปิยวัฒน์ สุขหาญ</h1>
             <p>Computer Mathematics Student • KMUTNB</p>
             
