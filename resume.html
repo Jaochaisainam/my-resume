@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - นายปิยวัฒน์ สุขหาญ</title>
+    <style>
+        :root {
+            --bg-dark: #1e293b;
+            --accent-red: #dc2626;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f9;
+            color: #333333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* ส่วนหัวสีน้ำเงินเข้ม */
+        .profile-header {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 4px solid var(--accent-red);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            margin-bottom: 20px;
+            background-color: #cbd5e1;
+        }
+
+        .profile-header h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .profile-header p {
+            margin: 0 0 25px 0;
+            color: var(--text-gray);
+            font-size: 15px;
+        }
+
+        .contact-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ส่วนเนื้อหาและปุ่มเมนู */
+        .content-body {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .instruction {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .menu-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .menu-card:hover {
+            border-color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .menu-card span {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .arrow {
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* รายละเอียดเนื้อหาในแต่ละส่วน (ซ่อน/แสดง) */
+        .detail-section {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .detail-section.active {
+            display: block;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--accent-red);
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ส่วนหัวโปรไฟล์ -->
+        <div class="profile-header">
+            <!-- หากมีรูปตัวเอง สามารถเปลี่ยนลิงก์รูปใน src ได้ -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300" alt="Profile" class="profile-img">
+            <h1>นายปิยวัฒน์ สุขหาญ</h1>
+            <p>Computer Mathematics Student • KMUTNB</p>
+            
+            <div class="contact-badges">
+                <div class="badge">📞 0622434352</div>
+                <div class="badge">✉️ s6704022611238@email.kmutnb.ac.th</div>
+                <div class="badge">📍 กรุงเทพมหานคร</div>
+            </div>
+        </div>
+
+        <!-- ส่วนเมนูเลือกหัวข้อ -->
+        <div class="content-body">
+            
+            <!-- หน้าหลัก (เมนูปุ่มกด) -->
+            <div id="main-menu">
+                <p class="instruction">คลิกเลือกหัวข้อด้านล่างเพื่อดูรายละเอียดประวัติ ทักษะคอมพิวเตอร์ และผลงาน</p>
+                
+                <div class="menu-grid">
+                    <a href="#" class="menu-card" onclick="showSection('about')">
+                        <span>เกี่ยวกับฉัน (About Me)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#" class="menu-card" onclick="showSection('education')">
+                        <span>ประวัติการศึกษา (Education)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#" class="menu-card" onclick="showSection('skills')">
+                        <span>ทักษะทางเทคโนโลยี (Technical Skills)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#" class="menu-card" onclick="showSection('projects')">
+                        <span>โครงงานและผลงาน (Projects)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#" class="menu-card" onclick="showSection('activities')">
+                        <span>กิจกรรมและใบรับรอง (Activities)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- รายละเอียด: เกี่ยวกับฉัน -->
+            <div id="about" class="detail-section">
+                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
+                <h2>เกี่ยวกับฉัน (About Me)</h2>
+                <p>สวัสดีครับ ผมชื่อ <strong>นายปิยวัฒน์ สุขหาญ</strong> กำลังศึกษาอยู่ในระดับปริญญาตรี สาขาวิชาคณิตศาสตร์เชิงวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ประยุกต์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (มจพ.) มีความสนใจด้านการพัฒนาซอฟต์แวร์ การจัดการฐานข้อมูล และการเขียนโปรแกรม</p>
+            </div>
+
+            <!-- รายละเอียด: ประวัติการศึกษา -->
+            <div id="education" class="detail-section">
+                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
+                <h2>ประวัติการศึกษา (Education)</h2>
+                <ul>
+                    <li><strong>ปริญญาตรี:</strong> สาขาวิชาคณิตศาสตร์เชิงวิทยาการคอมพิวเตอร์ คณะวิทยาศาสตร์ประยุกต์ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (กำลังศึกษา)</li>
+                    <li><strong>มัธยมศึกษาตอนปลาย:</strong> สายการเรียนวิทยาศาสตร์-คณิตศาสตร์</li>
+                </ul>
+            </div>
+
+            <!-- รายละเอียด: ทักษะทางเทคโนโลยี -->
+            <div id="skills" class="detail-section">
+                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
+                <h2>ทักษะทางเทคโนโลยี (Technical Skills)</h2>
+                <ul>
+                    <li><strong>Languages:</strong> C#, Python, HTML, CSS, JavaScript, SQL</li>
+                    <li><strong>Databases:</strong> Microsoft Access, MySQL, SQL Server</li>
+                    <li><strong>Tools & Platforms:</strong> Git, GitHub, Visual Studio, VS Code</li>
+                </ul>
+            </div>
+
+            <!-- รายละเอียด: โครงงานและผลงาน -->
+            <div id="projects" class="detail-section">
+                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
+                <h2>โครงงานและผลงาน (Projects)</h2>
+                <ul>
+                    <li><strong>YommabahnRama7 Shop:</strong> ระบบจัดการฐานข้อมูลร้านค้าด้วย Microsoft Access 2021</li>
+                    <li><strong>Party Bill Splitter:</strong> เว็บแอปพลิเคชันคำนวณหารค่าใช้จ่ายด้วย HTML, CSS และ JavaScript</li>
+                </ul>
+            </div>
+
+            <!-- รายละเอียด: กิจกรรมและใบรับรอง -->
+            <div id="activities" class="detail-section">
+                <button class="back-btn" onclick="showMenu()">← กลับหน้าหลัก</button>
+                <h2>กิจกรรมและใบรับรอง (Activities)</h2>
+                <ul>
+                    <li>เข้าร่วมโครงการอบรมเชิงปฏิบัติการพัฒนาซอฟต์แวร์และอัลกอริทึม</li>
+                    <li>กิจกรรมจิตอาสาและพัฒนาชุมชนของคณะวิทยาศาสตร์ประยุกต์ มจพ.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- สคริปต์สลับหน้าจอ -->
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('main-menu').style.display = 'none';
+            document.querySelectorAll('.detail-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showMenu() {
+            document.querySelectorAll('.detail-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById('main-menu').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
